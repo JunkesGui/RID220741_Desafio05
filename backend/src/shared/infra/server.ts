@@ -1,10 +1,13 @@
-import { AppDataSource } from "./database";
+import { AppDataSource } from "./database/database";
 import express from "express";
+import routes from "./routes";
 
 const startServer = async () => {
   await AppDataSource.initialize();
 
   const app = express();
+
+  app.use(routes);
 
   console.log("Connected to database");
 
