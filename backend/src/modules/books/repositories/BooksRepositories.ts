@@ -18,4 +18,8 @@ export default class BooksRepositories implements IBookRepositories {
     await this.datasource.save(book);
     return book;
   }
+
+  async findByIsbn(isbn: string): Promise<Book | null> {
+    return this.datasource.findOneBy({ isbn });
+  }
 }

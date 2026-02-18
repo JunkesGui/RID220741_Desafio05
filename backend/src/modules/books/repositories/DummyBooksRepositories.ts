@@ -1,7 +1,8 @@
 import { ICreateBook } from "@shared/interfaces/ICreateBook";
 import { Book } from "../entities/Book";
+import { IBookRepositories } from "./IBookRepositories";
 
-export default class DummyBooksRepositories {
+export default class DummyBooksRepositories implements IBookRepositories {
   private books: Book[] = [];
 
   async create({ titulo, paginas, isbn, editora }: ICreateBook): Promise<Book> {
@@ -24,5 +25,11 @@ export default class DummyBooksRepositories {
     this.books[findBook] = book;
 
     return book;
+  }
+
+  async findByIsbn(isbn: string): Promise<Book | null> {
+    const book = this.books.find((book) => book.isbn === isbn);
+
+    return book as Book | null;
   }
 }

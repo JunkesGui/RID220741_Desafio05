@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run docker:up && ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/shared/infra/server.ts",
+    "dev": "npm run docker:up && ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/server.ts",
     "docker:up": "docker compose -f ./src/shared/infra/compose.yaml up -d",
     "docker:down": "docker compose -f ./src/shared/infra/compose.yaml down",
     "test": "jest",
