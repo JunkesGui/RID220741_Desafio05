@@ -15,6 +15,6 @@ export default class BooksControllers {
       isbn,
       editora,
     });
-    return response.json({ code: "200" });
+    return response.json(book);
   }
 }
