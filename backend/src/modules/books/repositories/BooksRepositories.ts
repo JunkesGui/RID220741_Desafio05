@@ -22,4 +22,12 @@ export default class BooksRepositories implements IBookRepositories {
   async findByIsbn(isbn: string): Promise<Book | null> {
     return this.datasource.findOneBy({ isbn });
   }
+
+  async findById(id: number): Promise<Book | null> {
+    return this.datasource.findOneBy({ id });
+  }
+
+  async findAll(): Promise<Book[]> {
+    return this.datasource.find();
+  }
 }

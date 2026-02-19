@@ -32,4 +32,14 @@ export default class DummyBooksRepositories implements IBookRepositories {
 
     return book as Book | null;
   }
+
+  async findById(id: number): Promise<Book | null> {
+    const book = this.books.find((book) => book.id === id);
+
+    return book as Book | null;
+  }
+
+  async findAll(): Promise<Book[]> {
+    return this.books;
+  }
 }
