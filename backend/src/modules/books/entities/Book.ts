@@ -9,7 +9,7 @@ export class Book {
   titulo: string;
 
   @Column({ type: "int" })
-  paginas: number;
+  num_paginas: number;
 
   @Column({ type: "text" })
   isbn: string;

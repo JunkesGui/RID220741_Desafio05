@@ -7,13 +7,13 @@ const booksRepositories = new BooksRepositories();
 
 export default class BooksControllers {
   async create(request: Request, response: Response): Promise<Response> {
-    const { id, titulo, paginas, isbn, editora } = request.body;
+    const { id, titulo, num_paginas, isbn, editora } = request.body;
     const createBookService = new CreateBookService(booksRepositories);
 
     const book = await createBookService.execute({
       id,
       titulo,
-      paginas,
+      num_paginas,
       isbn,
       editora,
     });

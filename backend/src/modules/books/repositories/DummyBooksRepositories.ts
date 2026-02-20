@@ -8,7 +8,7 @@ export default class DummyBooksRepositories implements IBookRepositories {
   async create({
     id,
     titulo,
-    paginas,
+    num_paginas,
     isbn,
     editora,
   }: ICreateBook): Promise<Book> {
@@ -16,7 +16,7 @@ export default class DummyBooksRepositories implements IBookRepositories {
 
     book.id = id;
     book.titulo = titulo;
-    book.paginas = paginas;
+    book.num_paginas = num_paginas;
     book.isbn = isbn;
     book.editora = editora;
 

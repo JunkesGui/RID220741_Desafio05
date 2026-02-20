@@ -6,14 +6,8 @@ import { ICreateBook } from "@shared/interfaces/ICreateBook";
 export default class BooksRepositories implements IBookRepositories {
   datasource = AppDataSource.getRepository(Book);
 
-  async create({
-    id,
-    titulo,
-    paginas,
-    isbn,
-    editora,
-  }: ICreateBook): Promise<Book> {
-    const book = this.datasource.create({ id, titulo, paginas, isbn, editora });
+  async create(book: ICreateBook): Promise<Book> {
+    const Createbook = this.datasource.create(book);
 
     await this.datasource.save(book);
 

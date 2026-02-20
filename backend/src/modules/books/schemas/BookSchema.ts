@@ -10,7 +10,7 @@ export const createBookSchema = celebrate({
   [Segments.BODY]: {
     id: Joi.number().required(),
     titulo: Joi.string().required(),
-    paginas: Joi.number().required(),
+    num_paginas: Joi.number().required(),
     isbn: Joi.string().required(),
     editora: Joi.string().required(),
   },
@@ -19,7 +19,7 @@ export const createBookSchema = celebrate({
 export const updateBookSchema = celebrate({
   [Segments.BODY]: {
     titulo: Joi.string(),
-    paginas: Joi.number(),
+    num_paginas: Joi.number(),
     isbn: Joi.string(),
     editora: Joi.string(),
   },

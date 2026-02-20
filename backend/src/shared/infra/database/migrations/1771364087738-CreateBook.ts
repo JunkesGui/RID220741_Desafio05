@@ -16,7 +16,7 @@ export class CreateBook1771364087738 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "paginas",
+            name: "num_paginas",
             type: "integer",
           },
           {
