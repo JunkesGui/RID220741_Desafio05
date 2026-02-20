@@ -8,6 +8,7 @@ export const idParamIsValid = celebrate({
 
 export const createBookSchema = celebrate({
   [Segments.BODY]: {
+    id: Joi.number().required(),
     titulo: Joi.string().required(),
     paginas: Joi.number().required(),
     isbn: Joi.string().required(),

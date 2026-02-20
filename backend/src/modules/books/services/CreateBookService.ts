@@ -7,17 +7,22 @@ export default class CreateBookService {
   constructor(private readonly bookRepositories: IBookRepositories) {}
 
   async execute({
+    id,
     titulo,
     paginas,
     isbn,
     editora,
   }: ICreateBook): Promise<Book> {
-    const bookExists = await this.bookRepositories.findByIsbn(isbn);
-    if (bookExists) {
+    const [idMatch, isbnMatch] = await Promise.all([
+      this.bookRepositories.findById(id),
+      this.bookRepositories.findByIsbn(isbn),
+    ]);
+    if (idMatch || isbnMatch) {
       throw new AppError("This book is already registered", 409);
     }
 
     const book = this.bookRepositories.create({
+      id,
       titulo,
       paginas,
       isbn,

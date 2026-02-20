@@ -2,11 +2,13 @@ import { AppDataSource } from "./database/database";
 import express from "express";
 import routes from "./routes";
 import ErrorHandlerMiddleware from "@shared/errors/ErrorHandlerMiddleware";
+import cors from "cors";
 
 const startServer = async () => {
   await AppDataSource.initialize();
 
   const app = express();
+  app.use(cors());
   app.use(express.json());
 
   app.use(routes);

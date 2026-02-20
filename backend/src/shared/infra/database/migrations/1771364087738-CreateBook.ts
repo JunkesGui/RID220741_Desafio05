@@ -10,8 +10,6 @@ export class CreateBook1771364087738 implements MigrationInterface {
             name: "id",
             type: "integer",
             isPrimary: true,
-            isGenerated: true,
-            generationStrategy: "increment",
           },
           {
             name: "titulo",

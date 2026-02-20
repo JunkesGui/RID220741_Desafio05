@@ -33,7 +33,5 @@ describe("ListBook Integration", () => {
   it("Should be able to return the list of registered Books", async () => {
     await request(app).post("/livros").send(DummyBook);
     const res = await request(app).get("/livros");
-
-    console.log(res.body);
   });
 });

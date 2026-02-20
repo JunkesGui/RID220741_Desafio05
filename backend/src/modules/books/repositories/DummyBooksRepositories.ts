@@ -5,10 +5,16 @@ import { IBookRepositories } from "./IBookRepositories";
 export default class DummyBooksRepositories implements IBookRepositories {
   private books: Book[] = [];
 
-  async create({ titulo, paginas, isbn, editora }: ICreateBook): Promise<Book> {
+  async create({
+    id,
+    titulo,
+    paginas,
+    isbn,
+    editora,
+  }: ICreateBook): Promise<Book> {
     const book = new Book();
 
-    book.id = this.books.length + 1;
+    book.id = id;
     book.titulo = titulo;
     book.paginas = paginas;
     book.isbn = isbn;
