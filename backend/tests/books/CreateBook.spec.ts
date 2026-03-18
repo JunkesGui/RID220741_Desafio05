@@ -2,14 +2,17 @@ import { AppDataSource } from "@shared/infra/database/database";
 import { App } from "supertest/types";
 import server from "@shared/infra/server";
 import request from "supertest";
-import { DummyBook } from "@modules/books/entities/DummyBook";
+import { Book } from "@modules/books/entities/Book";
+import { CreateDummyBook } from "@modules/books/entities/DummyBook";
 
 describe("CreateBook Integration", () => {
   let app: App;
+  let dummyBook: Book;
 
   beforeAll(async () => {
     await AppDataSource.initialize();
     app = (await server) as App;
+    dummyBook = CreateDummyBook(1);
   });
 
   afterAll(async () => {
@@ -23,14 +26,14 @@ describe("CreateBook Integration", () => {
   });
 
   it("Should be able to create a new Book", async () => {
-    const res = await request(app).post("/livros").send(DummyBook);
+    const res = await request(app).post("/livros").send(dummyBook);
 
     expect(res.status).toBe(200);
-    expect(res.body.titulo).toBe(DummyBook.titulo);
+    expect(res.body.titulo).toBe(dummyBook.titulo);
   });
 
   it("Should not be able to create a book with a duplicate ISBN", async () => {
-    const res = await request(app).post("/livros").send(DummyBook);
+    const res = await request(app).post("/livros").send(dummyBook);
 
     expect(res.status).toBe(409);
   });

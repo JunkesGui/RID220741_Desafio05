@@ -48,4 +48,11 @@ export default class DummyBooksRepositories implements IBookRepositories {
   async findAll(): Promise<Book[]> {
     return this.books;
   }
+
+  async remove(book: Book): Promise<void> {
+    const index = this.books.findIndex((findBook) => findBook.id === book.id);
+    if (index !== -1) {
+      this.books = this.books.filter((b) => b.id !== index + 1);
+    }
+  }
 }

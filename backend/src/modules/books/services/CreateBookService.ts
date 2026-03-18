@@ -15,8 +15,8 @@ export default class CreateBookService {
       throw new AppError("This book is already registered", 409);
     }
 
-    const Createbook = this.bookRepositories.create(book);
+    const createbook = this.bookRepositories.create(book);
 
-    return book;
+    return createbook;
   }
 }

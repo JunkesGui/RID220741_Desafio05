@@ -2,15 +2,17 @@ import { AppDataSource } from "@shared/infra/database/database";
 import { App } from "supertest/types";
 import server from "@shared/infra/server";
 import request from "supertest";
-import { DummyBook } from "@modules/books/entities/DummyBook";
-import { get } from "http";
+import { Book } from "@modules/books/entities/Book";
+import { CreateDummyBook } from "@modules/books/entities/DummyBook";
 
 describe("ListBook Integration", () => {
   let app: App;
+  let dummyBook: Book;
 
   beforeAll(async () => {
     await AppDataSource.initialize();
     app = (await server) as App;
+    dummyBook = CreateDummyBook(1);
   });
 
   afterAll(async () => {
@@ -31,7 +33,7 @@ describe("ListBook Integration", () => {
   });
 
   it("Should be able to return the list of registered Books", async () => {
-    await request(app).post("/livros").send(DummyBook);
+    await request(app).post("/livros").send(dummyBook);
     const res = await request(app).get("/livros");
   });
 });

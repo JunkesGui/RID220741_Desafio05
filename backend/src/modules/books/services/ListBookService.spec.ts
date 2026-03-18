@@ -1,5 +1,5 @@
 import { Book } from "../entities/Book";
-import { DummyBook } from "../entities/DummyBook";
+import { CreateDummyBook } from "../entities/DummyBook";
 import DummyBooksRepositories from "../repositories/DummyBooksRepositories";
 import CreateBookService from "./CreateBookService";
 import ListBookService from "./ListBookService";
@@ -7,12 +7,14 @@ import ListBookService from "./ListBookService";
 let bookRepositories: DummyBooksRepositories;
 let createBook: CreateBookService;
 let listBook: ListBookService;
+let DummyBook: Book;
 
 describe("ListBookService", () => {
   beforeEach(() => {
     bookRepositories = new DummyBooksRepositories();
     listBook = new ListBookService(bookRepositories);
     createBook = new CreateBookService(bookRepositories);
+    DummyBook = CreateDummyBook(1);
   });
 
   it("Should be able to return the list of registered Books", async () => {

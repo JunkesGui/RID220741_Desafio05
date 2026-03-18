@@ -30,4 +30,9 @@ export default class BooksRepositories implements IBookRepositories {
   async findAll(): Promise<Book[]> {
     return this.datasource.find();
   }
+
+  async remove(book: Book): Promise<void> {
+    await this.datasource.remove(book);
+    return;
+  }
 }

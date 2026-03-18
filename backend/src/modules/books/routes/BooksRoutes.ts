@@ -7,5 +7,6 @@ const booksController = new BooksControllers();
 
 booksRouter.post("/", createBookSchema, booksController.create);
 booksRouter.get("/", booksController.index);
+booksRouter.delete("/:id", booksController.delete);
 
 export default booksRouter;

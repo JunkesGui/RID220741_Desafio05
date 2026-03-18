@@ -1,7 +1,11 @@
-export const DummyBook = {
-  id: 1,
-  titulo: "Teste",
-  num_paginas: 10,
-  isbn: "123",
-  editora: "Editora Teste",
+import { Book } from "./Book";
+
+export const CreateDummyBook = (parId: number): Book => {
+  return {
+    id: parId,
+    titulo: "Teste_Titulo",
+    num_paginas: 10,
+    isbn: "Teste_ISBN",
+    editora: "Teste_Editora",
+  };
 };

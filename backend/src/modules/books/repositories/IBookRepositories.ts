@@ -7,4 +7,5 @@ export interface IBookRepositories {
   findByIsbn(isbn: string): Promise<Book | null>;
   findById(id: number): Promise<Book | null>;
   findAll(): Promise<Book[]>;
+  remove(book: Book): Promise<void>;
 }
