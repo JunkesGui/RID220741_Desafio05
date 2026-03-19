@@ -26,7 +26,7 @@ const LivrosEdicao = () => {
     if(livro.id!=undefined && livro.id!='' && livro.titulo!=undefined && livro.titulo!='' && livro.num_paginas!=undefined && livro.num_paginas!='' && livro.isbn !=undefined && livro.isbn !='' && livro.editora !=undefined && livro.editora !=''){
       await LivrosService.updateLivro(Number(livro.id),body)
       .then(({data})=>{
-        alert(data.mensagem)
+        alert(data)
       })
       .catch(({response:{data,status}})=>{
         alert(`${status} - ${data}`)      

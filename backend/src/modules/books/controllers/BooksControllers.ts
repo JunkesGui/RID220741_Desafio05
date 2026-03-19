@@ -4,6 +4,7 @@ import BooksRepositories from "../repositories/BooksRepositories";
 import ListBookService from "../services/ListBookService";
 import DeleteBookService from "../services/DeleteBookService";
 import UpdateBookService from "../services/UpdateBookService";
+import GetBookService from "../services/GetBookService";
 
 const booksRepositories = new BooksRepositories();
 
@@ -28,6 +29,13 @@ export default class BooksControllers {
     return response.json(books);
   }
 
+  async show(request: Request, response: Response): Promise<Response> {
+    const id = Number(request.params.id);
+    const getBookService = new GetBookService(booksRepositories);
+    const book = await getBookService.execute(id);
+    return response.status(200).json(book);
+  }
+
   async delete(request: Request, response: Response): Promise<Response> {
     const id = Number(request.params.id);
     const deleteBook = new DeleteBookService(booksRepositories);
@@ -46,6 +54,6 @@ export default class BooksControllers {
       isbn,
       editora,
     });
-    return response.json(book);
+    return response.json("Livro atualizado com sucesso!");
   }
 }

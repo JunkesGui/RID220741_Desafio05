@@ -21,6 +21,7 @@ export const updateBookSchema = celebrate({
     id: Joi.number().required(),
   },
   [Segments.BODY]: {
+    id: Joi.number().required(),
     titulo: Joi.string(),
     num_paginas: Joi.number(),
     isbn: Joi.string(),
