@@ -15,7 +15,7 @@ describe("DeleteBookService", () => {
     bookRepositories = new DummyBooksRepositories();
     createBook = new CreateBookService(bookRepositories);
     deleteBook = new DeleteBookService(bookRepositories);
-    dummyBook = CreateDummyBook(1);
+    dummyBook = CreateDummyBook(1, "Teste_ISBN");
   });
 
   it("Should be able to delete a Book", async () => {

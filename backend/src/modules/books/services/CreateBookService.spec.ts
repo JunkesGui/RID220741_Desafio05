@@ -12,7 +12,7 @@ describe("CreateBookService", () => {
   beforeEach(() => {
     bookRepositories = new DummyBooksRepositories();
     createBook = new CreateBookService(bookRepositories);
-    dummyBook = CreateDummyBook(1);
+    dummyBook = CreateDummyBook(1, "Teste_ISBN");
   });
 
   it("Should be able to create a Book", async () => {

@@ -12,7 +12,7 @@ describe("CreateBook Integration", () => {
   beforeAll(async () => {
     await AppDataSource.initialize();
     app = (await server) as App;
-    dummyBook = CreateDummyBook(1);
+    dummyBook = CreateDummyBook(1, "Teste_ISBN");
   });
 
   afterAll(async () => {

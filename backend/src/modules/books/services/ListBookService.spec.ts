@@ -14,7 +14,7 @@ describe("ListBookService", () => {
     bookRepositories = new DummyBooksRepositories();
     listBook = new ListBookService(bookRepositories);
     createBook = new CreateBookService(bookRepositories);
-    DummyBook = CreateDummyBook(1);
+    DummyBook = CreateDummyBook(1, "Teste_ISBN");
   });
 
   it("Should be able to return the list of registered Books", async () => {
