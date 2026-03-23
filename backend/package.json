@@ -9,7 +9,7 @@
     "test:watch": "jest --watchAll",
     "migration:create": "cross-env MIGRATION_NAME=$npm_config_name cmd /c \"ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create src/shared/infra/database/migrations/%MIGRATION_NAME%\"",
     "migration:run": "ts-node -r tsconfig-paths/register ../node_modules/typeorm/cli.js migration:run -d ./src/shared/infra/database/database.ts",
-    "build": "npm install && tsc"
+    "build": "rm -rf build && tsc"
   },
   "keywords": [],
   "author": "",
