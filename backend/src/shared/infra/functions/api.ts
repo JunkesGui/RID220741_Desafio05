@@ -1,6 +1,12 @@
 import serverless from "serverless-http";
 import { startServer } from "../server";
 
-const handler = startServer().then((app) => serverless(app));
+let handlerInstance: ReturnType<typeof serverless>;
 
-export { handler };
+export const handler = async (event: any, context: any) => {
+  if (!handlerInstance) {
+    const app = await startServer();
+    handlerInstance = serverless(app);
+  }
+  return handlerInstance(event, context);
+};
