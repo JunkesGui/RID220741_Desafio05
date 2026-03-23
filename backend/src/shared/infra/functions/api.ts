@@ -1,12 +1,18 @@
 import serverless from "serverless-http";
 import { startServer } from "../server";
 
-let handlerInstance: ReturnType<typeof serverless>;
+let handlerInstance: ReturnType<typeof serverless> | null = null;
 
-export const handler = async (event: any, context: any) => {
+const getHandler = async () => {
   if (!handlerInstance) {
     const app = await startServer();
-    handlerInstance = serverless(app);
+    handlerInstance = serverless(app, { basePath: "/api" });
   }
-  return handlerInstance(event, context);
+  return handlerInstance;
+};
+
+export const handler = async (event: any, context: any) => {
+  context.callbackWaitsForEmptyEventLoop = false; // important for DB connections
+  const h = await getHandler();
+  return h(event, context);
 };
