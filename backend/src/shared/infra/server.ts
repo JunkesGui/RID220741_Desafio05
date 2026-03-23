@@ -5,7 +5,9 @@ import ErrorHandlerMiddleware from "@shared/errors/ErrorHandlerMiddleware";
 import cors from "cors";
 
 export const startServer = async () => {
-  await AppDataSource.initialize();
+  if (!AppDataSource.isInitialized) {
+    await AppDataSource.initialize();
+  }
 
   const app = express();
   app.use(cors());
