@@ -12,7 +12,17 @@ const getHandler = async () => {
 };
 
 export const handler = async (event: any, context: any) => {
-  context.callbackWaitsForEmptyEventLoop = false; // important for DB connections
-  const h = await getHandler();
-  return h(event, context);
+  context.callbackWaitsForEmptyEventLoop = false;
+
+  try {
+    console.log("Incoming event:", JSON.stringify(event));
+    const h = await getHandler();
+    return await h(event, context);
+  } catch (error) {
+    console.error("Handler error:", error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: String(error) }),
+    };
+  }
 };
