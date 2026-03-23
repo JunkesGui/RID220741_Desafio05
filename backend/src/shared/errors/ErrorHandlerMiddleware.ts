@@ -16,7 +16,7 @@ export default class ErrorHandlerMiddleware {
     }
     return res.status(500).json({
       type: "error",
-      message: "Internal server error",
+      message: error.message,
     });
   }
 }
