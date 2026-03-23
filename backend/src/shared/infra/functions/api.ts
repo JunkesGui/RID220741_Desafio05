@@ -1,5 +1,8 @@
 import serverless from "serverless-http";
 import { startServer } from "../server";
+import { Book } from "@modules/books/entities/Book";
+
+const _entities = [Book];
 
 export const handler = async (event: any, context: any) => {
   context.callbackWaitsForEmptyEventLoop = false;
