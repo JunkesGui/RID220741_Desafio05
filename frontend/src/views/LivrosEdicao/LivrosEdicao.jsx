@@ -29,7 +29,7 @@ const LivrosEdicao = () => {
         alert(data)
       })
       .catch(({response:{data,status}})=>{
-        alert(`${status} - ${data}`)      
+        alert(`${status} - ${data.message}`)      
       });
     }  
 

@@ -10,13 +10,13 @@ export default class UpdateBookService {
     const oldBook = await this.bookRepositories.findById(book.id);
 
     if (!oldBook) {
-      throw new AppError("Book not found", 404);
+      throw new AppError("Livro não encontrado", 404);
     }
 
     const isbnMatch = await this.bookRepositories.findByIsbn(book.isbn);
 
     if (isbnMatch && book.isbn !== oldBook.isbn) {
-      throw new AppError("This book is already registered", 409);
+      throw new AppError("Este ID e/ou ISBN já está em uso", 409);
     }
 
     oldBook.titulo = book.titulo;

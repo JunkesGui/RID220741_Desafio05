@@ -12,7 +12,7 @@ export default class CreateBookService {
       this.bookRepositories.findByIsbn(book.isbn),
     ]);
     if (idMatch || isbnMatch) {
-      throw new AppError("This book is already registered", 409);
+      throw new AppError("Este ID e/ou ISBN já está em uso", 409);
     }
 
     const createbook = this.bookRepositories.create(book);
