@@ -5,5 +5,8 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces"
+  },
+  "dependencies": {
+    "serverless-http": "^4.0.0"
   }
 }

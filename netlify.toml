@@ -5,7 +5,7 @@
   publish = "frontend/dist"
 
 [functions]
-  directory = "backend/src/shared/infra"
+  directory = "backend/build/src/shared/infra/netlify.js"
   node_bundler = "esbuild"
 
 [[redirects]]

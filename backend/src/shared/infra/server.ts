@@ -4,7 +4,7 @@ import routes from "./routes";
 import ErrorHandlerMiddleware from "@shared/errors/ErrorHandlerMiddleware";
 import cors from "cors";
 
-const startServer = async () => {
+export const startServer = async () => {
   await AppDataSource.initialize();
 
   const app = express();
@@ -19,12 +19,10 @@ const startServer = async () => {
   return app;
 };
 
-export default startServer()
-  .then((app) => {
-    return app.listen(3000, () => {
-      console.log("Listening at port 3000");
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+if (require.main === module) {
+  startServer()
+    .then((app) => {
+      app.listen(3000, () => console.log("Listening at port 3000"));
+    })
+    .catch(console.error);
+}
