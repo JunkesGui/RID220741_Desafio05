@@ -46,7 +46,7 @@ const LivrosEdicao = () => {
     <div className='livrosCadastro'>
         <h1>Edição de Livros</h1>
         <div>
-          <form id="formulario">
+          <form id="formulario" onSubmit={(e) => {e.preventDefault(); editLivro();}}>
             <div className='form-group'>
               <label>Id</label>
               <input type="text" disabled required onChange={(event)=>{ setLivro({...livro, id: event.target.value})}} value={livro.id || ''}></input>
@@ -68,9 +68,7 @@ const LivrosEdicao = () => {
               <input type="text"  required onChange={(event)=>{ setLivro({...livro, editora: event.target.value})}} value={livro.editora || ''}></input>
             </div> 
             <div className='form-group'>
-              <button onClick={()=>{
-              editLivro()
-            }}>Atualizar Livro</button>  
+              <button type='submit'>Atualizar Livro</button>  
             </div>                   
           </form>
           </div>        
